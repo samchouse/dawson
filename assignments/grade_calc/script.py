@@ -24,5 +24,5 @@ weighted_avg += average([grade_ass_one, grade_ass_two]) * .25
 weighted_avg += grade_final * .18
 weighted_avg += grade_preps * .06
 
-# how should it be rounded? down or up?
+# how should it be rounded? down or up? decimal places?
 print(round(weighted_avg, 1))
