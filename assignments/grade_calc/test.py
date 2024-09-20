@@ -17,10 +17,19 @@ for idx, case in enumerate(cases):
         input="\n".join(case["inputs"]).encode(),
         stdout=subprocess.PIPE,
     )
-    grade = re.search(r"\d+\.\d+$", process.stdout.decode()).group(0)
+    grade = re.search(
+        r"\d+(\.\d+)?(?!.*\d)", process.stdout.decode().replace("\n", "")
+    ).group(0)
 
     if grade == case["output"]:
         print(f"Passed test {idx + 1}/{len(cases)}")
     else:
-        print(f"Failed test {idx + 1}/{len(cases)}")
-        print(f"Got: {grade}, Expected: {case['output']}")
+        print(f"!!! Failed test {idx + 1}/{len(cases)}")
+        print(f"!!! Got: {grade}, Expected: {case['output']}")
+        if (
+            grade.find(case["output"]) != -1
+            or grade.find(case["output"].split(".")[0]) != -1
+        ):
+            print(
+                "!!! This may be a difference in rounding styles, please verify for yourself"
+            )

@@ -1,32 +1,42 @@
-def float_input(prompt: str) -> int:
-    return int(input(prompt))
+def float_input(wants_grade: bool, suffix: str) -> float:
+    prompt = f"Enter the {f"number of {suffix} completed" if not wants_grade else f"grade for {suffix}"}: "
+    return float(input(prompt))
 
 
-def average(nums: list[int]) -> float:
-    return sum(nums) / len(nums)
+def weighted(grade: float, weight: int) -> float:
+    return grade * (weight / 100)
 
-
-comp_labs = float_input("Enter the number of labs completed: ")
-comp_quizzes = float_input("Enter the number of quizzes completed: ")
-grade_ass_one = float_input("Enter the grade for Assignment 1: ")
-grade_ass_two = float_input("Enter the grade for Assignment 2: ")
-grade_ass_three = float_input("Enter the grade for Assignment 3: ")
-grade_ass_four = float_input("Enter the grade for Assignment 4: ")
-grade_mid_one = float_input("Enter the grade for Midterm 1: ")
-grade_mid_two = float_input("Enter the grade for Midterm 2: ")
-grade_final = float_input("Enter the grade for Final Exam: ")
-grade_preps = float_input("Enter the grade for Midterms and Final Preparation: ")
 
 weighted_avg = 0
 
-weighted_avg += comp_labs / 6 * 100 * 0.2
-weighted_avg += comp_quizzes / 6 * 100 * 0.15
-weighted_avg += (
-    average([grade_ass_one, grade_ass_two, grade_ass_three, grade_ass_four]) * 0.16
-)
-weighted_avg += average([grade_ass_one, grade_ass_two]) * 0.25
-weighted_avg += grade_final * 0.18
-weighted_avg += grade_preps * 0.06
+# Pass or fail
+labs_weight = 20
+completed_labs = float_input(False, "labs")
+if completed_labs > 6:
+    weighted_avg += weighted(100, labs_weight)
+else:
+    weighted_avg += weighted(completed_labs / 6 * 100, labs_weight)
 
-# how should it be rounded? down or up? decimal places?
-print(round(weighted_avg, 1))
+quizzes_weight = 15
+completed_quizzes = float_input(False, "quizzes")
+if completed_quizzes > 6:
+    weighted_avg += weighted(100, quizzes_weight)
+else:
+    weighted_avg += weighted(completed_quizzes / 6 * 100, quizzes_weight)
+
+# Assignments
+assignment_weight = 4
+weighted_avg += weighted(float_input(True, "Assignment 1"), assignment_weight)
+weighted_avg += weighted(float_input(True, "Assignment 2"), assignment_weight)
+weighted_avg += weighted(float_input(True, "Assignment 3"), assignment_weight)
+weighted_avg += weighted(float_input(True, "Assignment 4"), assignment_weight)
+
+# Midterms & finals
+midterm_weight = 12.5
+weighted_avg += weighted(float_input(True, "Midterm 1"), midterm_weight)
+weighted_avg += weighted(float_input(True, "Midterm 2"), midterm_weight)
+weighted_avg += weighted(float_input(True, "Final Exam"), 18)
+weighted_avg += weighted(float_input(True, "Midterms and Final Preparation"), 6)
+
+# how should it be rounded? down or up? decimal places? check f strings and inline if
+print(f"Your final grade is {round(weighted_avg, 2)}.")
