@@ -26,10 +26,7 @@ for idx, case in enumerate(cases):
     else:
         print(f"!!! Failed test {idx + 1}/{len(cases)}")
         print(f"!!! Got: {grade}, Expected: {case['output']}")
-        if (
-            grade.find(case["output"]) != -1
-            or grade.find(case["output"].split(".")[0]) != -1
-        ):
+        if abs(float(grade) - float(case["output"])) < 1:
             print(
                 "!!! This may be a difference in rounding styles, please verify for yourself"
             )

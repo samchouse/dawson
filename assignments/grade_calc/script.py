@@ -1,5 +1,5 @@
 def float_input(wants_grade: bool, suffix: str) -> float:
-    prompt = f"Enter the {f"number of {suffix} completed" if not wants_grade else f"grade for {suffix}"}: "
+    prompt = f"Enter the {f"grade for {suffix}" if wants_grade else f"number of {suffix} completed"}: "
     return float(input(prompt))
 
 
@@ -38,6 +38,5 @@ weighted_avg += weighted(float_input(True, "Midterm 2"), midterm_weight)
 weighted_avg += weighted(float_input(True, "Final Exam"), 18)
 weighted_avg += weighted(float_input(True, "Midterms and Final Preparation"), 6)
 
-# how should it be rounded? down or up? decimal places? check f strings and inline if
 print()
 print(f"Your final grade is {round(weighted_avg, 2)}%.")
