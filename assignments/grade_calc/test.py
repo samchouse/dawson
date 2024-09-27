@@ -12,12 +12,8 @@ with open("tests.json", "r") as file:
     cases = json.load(file)
 
 for idx, case in enumerate(cases):
-    is_python_3 = (
-        subprocess.run(["which", "python3"], stdout=subprocess.DEVNULL).returncode == 0
-    )
-
     process = subprocess.run(
-        ["python3" if is_python_3 else "python", args[0]],
+        [sys.orig_argv[0], args[0]],
         input="\n".join(case["inputs"]).encode(),
         stdout=subprocess.PIPE,
     )
