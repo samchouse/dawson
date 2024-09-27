@@ -43,5 +43,4 @@ weighted_avg += weighted(float_input("Midterm 2"), midterm_weight)
 weighted_avg += weighted(float_input("Final Exam"), 18)
 weighted_avg += weighted(float_input("Midterms and Final Preparation"), 6)
 
-print()
-print(f"Your final grade is {round(weighted_avg, 2)}%.")
+print(f"Your grade is: {round(weighted_avg, 2)}")
