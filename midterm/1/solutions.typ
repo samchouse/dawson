@@ -68,7 +68,7 @@
       ```py
       def monthly_salary(hourly_wage: float, discount: float) -> float:
         base_monthly_salary = hourly_wage * 8 * 22
-        return round(base_monthly_salary - (base_monthly_salary * (discount / 100)))
+        return round(base_monthly_salary - (base_monthly_salary * (discount / 100)), 2)
       ```
     ]
   )
