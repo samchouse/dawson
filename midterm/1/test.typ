@@ -17,7 +17,7 @@
     radius: 2pt,
     [
       ```t
-      print(Hello, Wrld!")❚
+      print("Hello, Wrld!")❚
       ~
       ~
       ~
@@ -30,11 +30,11 @@
   
   #enum(
     numbering: "a)",
-    [Esc, K, K, K, K, K, I, O],
-    [I, L, L, L, L, L, Esc, O],
-    [N, J, J, J, J, J, I, O],
-    [Esc, H, H, H, H, H, I, O],
-    [N, H, H, H, H, H, I, O]
+    [Esc, K, K, K, K, K, I, o],
+    [I, L, L, L, L, L, Esc, o],
+    [N, J, J, J, J, J, I, o],
+    [Esc, H, H, H, H, H, I, o],
+    [N, H, H, H, H, H, I, o]
   )
 
 + Consider the following program:
@@ -95,6 +95,92 @@
     [Nothing: the code contains an error.]
   )
 
++ Which of the following statements is NOT true?
+
+  #enum(
+    numbering: "a)",
+    [Python is a programming language that is computed & executed line by line],
+    [The "else:" code block will be skipped if the "if <condition>:" condition is True],
+    [To upload a change in a file using git, we can use the "git push --force" command],
+    [To display the contents of a file in the terminal, we can use the "cat" command],
+    [To save and quit a document after editing it with vim, we use the function ":sq"],
+    [None of the above],
+  )
+
++ Trace the following expression:
+
+  #block(
+    fill: luma(230),
+    width: 100%,
+    inset: 8pt,
+    radius: 2pt,
+    [
+      ```py
+      x = "SF1"
+      y = "Dawson"
+      z = x + y
+
+      a = len(x) != len(y) and x != z and bool(y and not True)
+      ```
+    ]
+  )
+
+  \
+  \
+  \
+  \
+  \
+  \
+
++ Trace the following expression:
+
+  #block(
+    fill: luma(230),
+    width: 100%,
+    inset: 8pt,
+    radius: 2pt,
+    [
+      ```py
+      t = 3
+      u = 0.8
+
+      a = int(t/u) == t and u != t
+      ```
+    ]
+  )
+
+  \
+  \
+  \
+  \
+  \
+  
+
++ Trace the following expression:
+
+  #block(
+    fill: luma(230),
+    width: 100%,
+    inset: 8pt,
+    radius: 2pt,
+    [
+      ```py
+      h = "Hello"
+      w = "World!"
+      c = ", "
+      def salutation(x: str, y: str) -> str:
+        return x + y
+
+      a = salutation(h, c) + w
+      ```
+    ]
+  )
+
+  \
+  \
+  \
+  \
+
 + Write a function that calculates the amount of money that a company must pay a freelancer for their work each month. Assume there are 8 hours a day and 22 working days in a month, and a discount may be applied.
 
   *Inputs:* a float of hourly wage and a float discount (in form of 25.0). \
@@ -137,10 +223,9 @@
   *Your solution must make use of a function that will accept an index as an argument and return the sum of each vector's component at that index.*
 
   ```py
-  def calc_resultant(vec1: List[int], vec2: List[int], vec3: List[int]) -> List[int]:
+  def calc_resultant(vec1: list[int], vec2: list[int], vec3: list[int]) -> list[int]:
   ```
 
-  \
   \
   \
   \
@@ -153,10 +238,10 @@
 
 + Calculate the magnitude of the resultant vector from the previous question.
   $ serif("Magnitude") = sqrt(x^2 + y^2) $
-  where $x$ is x_comp and $y$ is y_comp.
+  where $x$ is x_comp and $y$ is y_comp. You can use the $sqrt$ function through the ```py math.sqrt(x: float)``` function in Python.
   
   ```py
-  def calc_magnitude(resultant: List[int]) -> float:
+  def calc_magnitude(resultant: list[int]) -> float:
   ```
   
   \
@@ -168,7 +253,7 @@
 
 + Calculate the angle of the resultant vector from the previous question.
   $ theta = arctan(abs(y)/abs(x)) $
-  where $x$ is x_comp and $y$ is y_comp. You can use the $arctan$ function through the ```py math.atan(x: float)``` function in Python.
+  where $x$ is x_comp and $y$ is y_comp. You can use the $arctan$ function through the ```py math.degrees(math.atan(x: float))``` function in Python.
   \
   \
   Then adjust the angle according to the following cases:
@@ -180,7 +265,7 @@
   ```py
   import math
   
-  def calc_angle(resultant: List[int]) -> float:
+  def calc_angle(resultant: list[int]) -> float:
   ```
   
   \
