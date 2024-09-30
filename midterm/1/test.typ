@@ -144,7 +144,7 @@
       t = 3
       u = 0.8
 
-      a = int(t/u) == t and u != t
+      a = int(t / u) == t and u != t
       ```
     ]
   )

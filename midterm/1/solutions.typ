@@ -21,12 +21,11 @@
     radius: 2pt,
     [
       a = len(x) != len(y) and x != z and bool(y and not True)\
-      => a = (len("SF1") != len("Dawson")) and ("SF1" != (x + y)) and bool("Dawson" or not True)\
-      => a = (3 != 6) and ("SF1" != ("SF1" + "Dawson")) and bool("Dawson" or False)\
-      => a = True and ("SF1" != "SF1Dawson") and bool("Dawson")\
-      => a = True and True and True\
-      => a = True and True\
-      => a = True
+      => a = (len("SF1") != len("Dawson")) and ("SF1" != "SF1Dawson") and bool("Dawson" and not True)\
+      => a = (3 != 6) and True and bool("Dawson" and False)\
+      => a = True and True and False\
+      => a = True and False\
+      => a = False
     ]
   )
 
@@ -36,8 +35,8 @@
     inset: 8pt,
     radius: 2pt,
     [
-      a = int(t/u) == t and u != t\
-      => a = int(3/0.8) == 3 and 0.8 != 3\
+      a = int(t / u) == t and u != t\
+      => a = int(3 / 0.8) == 3 and 0.8 != 3\
       => a = (int(3.75) == 3) and (0.8 != 3)\
       => a = (3 == 3) and (0.8 != 3)\
       => a = True and True\
